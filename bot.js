@@ -33,9 +33,9 @@ async function sendPhoto(caption) {
   }
 }
 
-// TEST - 5:45 PM
-cron.schedule("45 17 * * *", () => {
-  console.log("⏰ 5:45 PM CRON - Ending Soon (TEST)");
+// 5:38 AM - Ending Soon
+cron.schedule("38 5 * * *", () => {
+  console.log("⏰ 5:38 AM CRON - Ending Soon");
   sendPhoto("⏰ Hurry! Lottery ending soon!");
 }, { timezone: "Asia/Kolkata" });
 
