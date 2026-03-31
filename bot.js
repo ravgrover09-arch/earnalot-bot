@@ -3,7 +3,6 @@ import path from "path";
 import axios from "axios";
 import FormData from "form-data";
 import cron from "node-cron";
-import { exec } from "child_process";
 
 const BOT_TOKEN = "8606024623:AAFZYcMcMMwr5vkg9z5_3FfPwQYEENjMJSg";
 const CHAT_ID = "-1003821449973";
@@ -34,23 +33,13 @@ async function sendPhoto(caption) {
   }
 }
 
-// Restart before each message to avoid hiccups
-cron.schedule("35 5 * * *", () => {
-  console.log("🔄 Restarting before 5:38 AM message...");
-  exec("pm2 restart earnalot-bot");
-}, { timezone: "Asia/Kolkata" });
-
-cron.schedule("30 8 * * *", () => {
-  console.log("🔄 Restarting before 8:33 AM message...");
-  exec("pm2 restart earnalot-bot");
-}, { timezone: "Asia/Kolkata" });
-
-// Scheduled messages
-cron.schedule("38 5 * * *", () => {
-  console.log("⏰ 5:38 AM CRON - Ending Soon");
+// TEST - 5:45 PM
+cron.schedule("45 17 * * *", () => {
+  console.log("⏰ 5:45 PM CRON - Ending Soon (TEST)");
   sendPhoto("⏰ Hurry! Lottery ending soon!");
 }, { timezone: "Asia/Kolkata" });
 
+// 8:33 AM - Lottery Live
 cron.schedule("33 8 * * *", () => {
   console.log("🎉 8:33 AM CRON - Lottery Live");
   sendPhoto("🎉 Lottery is LIVE now! Get your tickets!");
