@@ -47,6 +47,6 @@ cron.schedule("33 8 * * *", () => {
 }, { timezone: "Asia/Kolkata" });
 
 // Keep alive web server for Render
-http.createServer((req, res) => res.end("Bot is running!")).listen(3000);
+http.createServer((req, res) => res.end("Bot is running!")).listen(process.env.PORT || 3000);
 
 console.log("🚀 Bot running with scheduled notifications...");
