@@ -3,6 +3,7 @@ import path from "path";
 import axios from "axios";
 import FormData from "form-data";
 import cron from "node-cron";
+import http from "http";
 
 const BOT_TOKEN = "8606024623:AAFZYcMcMMwr5vkg9z5_3FfPwQYEENjMJSg";
 const CHAT_ID = "-1003821449973";
@@ -44,5 +45,8 @@ cron.schedule("33 8 * * *", () => {
   console.log("🎉 8:33 AM CRON - Lottery Live");
   sendPhoto("🎉 Lottery is LIVE now! Get your tickets!");
 }, { timezone: "Asia/Kolkata" });
+
+// Keep alive web server for Render
+http.createServer((req, res) => res.end("Bot is running!")).listen(3000);
 
 console.log("🚀 Bot running with scheduled notifications...");
